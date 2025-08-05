@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['very_5flow_0',['VERY_LOW',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_connection_sensitivity.html#ae59adfe8ce5897466d330ac277590d24',1,'com::gallagher::security::mobileaccess::BluetoothConnectionSensitivity']]]
+  ['obfuscation_20enabled_0',['I Get Errors with Obfuscation Enabled',['../index.html#autotoc_md52',1,'']]],
+  ['of_20any_20update_20errors_1',['3. Implement the SdkFeatureStateDelegate to be Notified of any Update Errors',['../index.html#autotoc_md35',1,'']]],
+  ['of_20readers_2',['2. Discovery of Readers',['../index.html#autotoc_md15',1,'']]],
+  ['office_5fmode_3',['OFFICE_MODE',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_salto_opening_mode.html#a1c3cefffd3e38b4a6836821e5f0f174f',1,'com::gallagher::security::mobileaccess::SaltoOpeningMode']]],
+  ['offline_5fonly_4',['OFFLINE_ONLY',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_delete_option.html#a38fe19987dffcf5de4e472e16cf025ff',1,'com::gallagher::security::mobileaccess::DeleteOption']]],
+  ['onaccesscompleted_5',['onAccessCompleted',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_access_listener.html#a043c3dfdd22cd8a6b61f1ee54ba32d6f',1,'com::gallagher::security::mobileaccess::AccessListener']]],
+  ['onaccessstarted_6',['onAccessStarted',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_access_listener.html#a24abf6a800557bedec664ab15a288514',1,'com::gallagher::security::mobileaccess::AccessListener']]],
+  ['onauthenticationtypeselectionrequested_7',['onAuthenticationTypeSelectionRequested',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_registration_listener.html#ae235b7780e60ad072977b2bf05bf5d6b',1,'com::gallagher::security::mobileaccess::RegistrationListener']]],
+  ['oncredentialdeletecompleted_8',['onCredentialDeleteCompleted',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_credential_delete_listener.html#aa1008f92e424d8b60a652599c25dffa1',1,'com::gallagher::security::mobileaccess::CredentialDeleteListener']]],
+  ['ondigitalidupdated_9',['onDigitalIdUpdated',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_digital_id_listener.html#afca08b97d7547370a52e0618a1e50300',1,'com::gallagher::security::mobileaccess::DigitalIdListener']]],
+  ['onfeatureerror_10',['onFeatureError',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_sdk_feature_state_listener.html#a878acdc9516cc8bca72bb8e221a4d181',1,'com::gallagher::security::mobileaccess::SdkFeatureStateListener']]],
+  ['onfeaturestateschanged_11',['onFeatureStatesChanged',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_sdk_feature_state_listener.html#ae302548dda00e3b746549a88837dfde4',1,'com::gallagher::security::mobileaccess::SdkFeatureStateListener']]],
+  ['onperipheralfound_12',['onPeripheralFound',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_salto_access_listener.html#a2679a785f8ee6d797db2dd8a4c4b2c92',1,'com::gallagher::security::mobileaccess::SaltoAccessListener']]],
+  ['onreaderactionenumerationcompleted_13',['onReaderActionEnumerationCompleted',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_action_enumeration_listener.html#a2af471c8939be2a90e2af3fa8feb8e7f',1,'com::gallagher::security::mobileaccess::ReaderActionEnumerationListener']]],
+  ['onreaderupdated_14',['onReaderUpdated',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_update_listener.html#a2b8b20f39ae29c748b5f050b6f6647b8',1,'com::gallagher::security::mobileaccess::ReaderUpdateListener']]],
+  ['onregistrationcompleted_15',['onRegistrationCompleted',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_registration_listener.html#ae6a39f438399522267820060b2b95ad8',1,'com::gallagher::security::mobileaccess::RegistrationListener']]],
+  ['onreturnedtoreader_16',['onReturnedToReader',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_automatic_access_listener.html#afac6eee5ed00e1c6d84397569618b61d',1,'com::gallagher::security::mobileaccess::AutomaticAccessListener']]],
+  ['onreturntoreaderrequired_17',['onReturnToReaderRequired',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_automatic_access_listener.html#a224100201af20e17dd418eabd601f1bb',1,'com::gallagher::security::mobileaccess::AutomaticAccessListener']]],
+  ['onsaltoaccesscompleted_18',['onSaltoAccessCompleted',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_salto_access_listener.html#a46d99b58c6b90187330c9fcf91e70b97',1,'com::gallagher::security::mobileaccess::SaltoAccessListener']]],
+  ['onsaltokeysupdated_19',['onSaltoKeysUpdated',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_salto_update_listener.html#ae9d0e0193dcaa0ab7af8c82274fb951f',1,'com::gallagher::security::mobileaccess::SaltoUpdateListener']]],
+  ['onstatechanged_20',['onStateChanged',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_sdk_state_listener.html#a434660e08a25ea94e686e2dfe85ee06d',1,'com::gallagher::security::mobileaccess::SdkStateListener']]],
+  ['optional_21',['Configure Logging (Optional)',['../index.html#autotoc_md49',1,'']]],
+  ['or_20runtime_20errors_20where_20a_20class_20or_20function_20is_20missing_22',['I Get Compilation or Runtime Errors Where a Class or Function is Missing',['../index.html#autotoc_md54',1,'']]],
+  ['or_20salto_20from_20the_20cloud_23',['I Don&apos;t Receive Mobile Credential Updates (i.e. Digital ID or Salto) from the Cloud',['../index.html#autotoc_md50',1,'']]],
+  ['org_20bouncycastle_20errors_20when_20compiling_24',['I Get &quot;Duplicate class org.bouncycastle...&quot; Errors when Compiling',['../index.html#autotoc_md51',1,'']]],
+  ['output_25',['OUTPUT',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_action_type.html#a6f4dd00d350b74db4f353d08e1a37d24',1,'com::gallagher::security::mobileaccess::ReaderActionType']]]
 ];

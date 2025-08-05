@@ -149,7 +149,7 @@ public class CredentialsFragment extends Fragment implements TabFragment, OnInvi
                         new AlertDialog.Builder(getActivity())
                                 .setMessage("Please select second factor authentication type")
                                 .setCancelable(false)
-                                .setPositiveButton("Fingerprint", (dlg, which) -> selector.select(true, SecondFactorAuthenticationType.FINGERPRINT))
+                                .setPositiveButton("Biometric", (dlg, which) -> selector.select(true, SecondFactorAuthenticationType.BIOMETRIC))
                                 .setNegativeButton("Passcode", (dlg, which) -> selector.select(true, SecondFactorAuthenticationType.PIN))
                                 .setNeutralButton("Cancel", (dlg, which) -> selector.select(false, null))
                                 .show();

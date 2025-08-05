@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -37,9 +38,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class ReadersFragment extends Fragment implements TabFragment, SdkStateListener, AutomaticAccessListener {
-
-    static final int PERMISSION_REQUEST_FINE_LOCATION = 2;
-    static final int PERMISSION_REQUEST_BLUETOOTH_CONNECT = 3;
 
     private enum ReaderVisualState {
         CONNECTING, GRANTED, DENIED, REQUESTED, COMPLETED
@@ -66,8 +64,16 @@ public class ReadersFragment extends Fragment implements TabFragment, SdkStateLi
 
     public String getTitle() { return "Readers"; }
     public int getActionId() { return R.id.action_readers; }
+    private final androidx.activity.result.ActivityResultLauncher<String[]> permissionLauncher;
 
-    public ReadersFragment() { }
+    public ReadersFragment() {
+        permissionLauncher = registerForActivityResult(
+                new RequestMultiplePermissions(),
+                result -> {
+                    // handle results here if required
+                });
+    }
+
 
     @Nullable
     @Override
@@ -147,11 +153,7 @@ public class ReadersFragment extends Fragment implements TabFragment, SdkStateLi
                     // Request location permissions from user.
                     // It's recommended you do this in a more sensible place so as not to spam the user with requests
                     // For android 12, location permissions are only required for Salto keys
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) { // both FINE and COARSE location must be requested Android 12 and up
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_FINE_LOCATION);
-                    } else if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_FINE_LOCATION);
-                    }
+                    permissionLauncher.launch(new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION });
                     break;
                 case BLE_ERROR_LOCATION_SERVICE_DISABLED:
                     messages.add("Location services are disabled; Please enable them to allow bluetooth connectivity.");
@@ -180,7 +182,7 @@ public class ReadersFragment extends Fragment implements TabFragment, SdkStateLi
                     messages.add("Please grant permission for this application to scan and connect to nearby devices");
 
                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT}, PERMISSION_REQUEST_BLUETOOTH_CONNECT);
+                        permissionLauncher.launch(new String[] { Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT });
                     }
                     break;
             }
