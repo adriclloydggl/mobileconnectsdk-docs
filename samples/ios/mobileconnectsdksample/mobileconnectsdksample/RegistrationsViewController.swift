@@ -267,6 +267,8 @@ class RegistrationsViewController : UITableViewController, WalletUpdateDelegate 
                 } else if let e = error {
                     if case .userCancelledProvisioning = e {
                         toast("Provisioning wallet cancelled")
+                    } else if case .provisioningInProgress = e {
+                        toast("Provisioning has already started. Please wait for it to complete before trying again.")
                     } else if case .prepareProvisioningError(let message, code: let errorCode) = e {
                         toast("Provisioning wallet failed")
                         log.error("prepareProvisioningError for credential \(wallet.credentialId) failed with message \(message) and errorCode \(errorCode).")
@@ -306,6 +308,7 @@ class CredentialCell : UITableViewCell {
     // UI controls and variables used for sample use of the wallet feature
     @IBOutlet private weak var _walletView: UIStackView!
     @IBOutlet private weak var _viewInWalletButton: UIButton!
+    @IBOutlet weak var _walletStatusLabel: UILabel!
     // _addToWalletButton UIButton is "PKAddPassButton" with custom type to ensure the design is compliant.
     // Always follow the official Add to Apple Wallet Guidelines (https://developer.apple.com/wallet/add-to-apple-wallet-guidelines/) for displaying the Add to Apple Wallet button in your app.
     @IBOutlet private weak var _addToWalletButton: UIButton!
@@ -321,7 +324,19 @@ class CredentialCell : UITableViewCell {
             _walletView.isHidden = true
             _addToWalletButton.isHidden = true
             _viewInWalletButton.isHidden = true
+            _walletStatusLabel.isHidden = true
             return
+        }
+        
+        if let wallet = _wallet {
+            _walletStatusLabel.isHidden = false
+            // The Wallet's 'addToWalletStatus' can be used to inform the users about the state of the pass on their phone and paired watch.
+            let walletStatus = wallet.addToWalletStatus
+            _walletStatusLabel.text = "Wallet Status:\nPhone: \(walletStatus.phoneStatus), Watch: \(walletStatus.watchStatus)"
+        }
+        else {
+            _walletStatusLabel.isHidden = true
+            _walletStatusLabel.text = "Wallet Status:\nPhone: Unknown, Watch: Unknown"
         }
         
         _walletView.isHidden = false
@@ -329,6 +344,7 @@ class CredentialCell : UITableViewCell {
         if let wallet = _wallet, wallet.shouldShowAddToWalletButton() {
             _addToWalletButton.isHidden = false
             _viewInWalletButton.isHidden = true
+
         } else {
             _addToWalletButton.isHidden = true
             _viewInWalletButton.isHidden = false

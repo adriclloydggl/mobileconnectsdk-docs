@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['challenge_0',['CHALLENGE',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_access_mode.html#acc3da3ae616b80aac7712da14dad8ebe',1,'com::gallagher::security::mobileaccess::AccessMode']]],
-  ['cloudtlsvalidationmode_1',['CloudTlsValidationMode',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_cloud_tls_validation_mode.html',1,'com::gallagher::security::mobileaccess']]],
-  ['configure_2',['configure',['../classcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_provider.html#a7c4f58318913f1e5906401a18e0e2990',1,'com.gallagher.security.mobileaccess.MobileAccessProvider.configure(@NonNull Application application, @Nullable String databaseFilePath, @Nullable String unlockNotificationChannelId, @Nullable String bleServiceForegroundNotificationChannelId)'],['../classcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_provider.html#a5a03b1ca235645e0aeffb9f8022bf466',1,'com.gallagher.security.mobileaccess.MobileAccessProvider.configure( @NonNull Application application, @Nullable String databaseFilePath, @Nullable NotificationsConfiguration notificationsConfiguration, @NonNull EnumSet&lt; SdkFeature &gt; enabledFeatures, @NonNull CloudTlsValidationMode cloudTlsValidationMode, @Nullable Map&lt; String, Object &gt; config)']]],
-  ['credential_5frequires_5fbiometrics_5fenrolment_3',['CREDENTIAL_REQUIRES_BIOMETRICS_ENROLMENT',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#af55034b3ff6517b2ebb84e2fa44026f0',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['credentialdeletelistener_4',['CredentialDeleteListener',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_credential_delete_listener.html',1,'com::gallagher::security::mobileaccess']]]
+  ['3_20access_20with_20aperio_20ble_20credentials_0',['3. Access with Aperio BLE Credentials',['../index.html#autotoc_md36',1,'']]],
+  ['3_20configure_20mobile_20connect_20sdk_20to_20include_20salto_20as_20an_20enabled_20feature_1',['3. Configure Mobile Connect SDK to Include Salto as an Enabled Feature',['../index.html#autotoc_md21',1,'']]],
+  ['3_20deleting_20a_20mobile_20credential_2',['3. Deleting a Mobile Credential',['../index.html#autotoc_md11',1,'']]],
+  ['3_20edit_20androidmanifest_20xml_3',['3. Edit AndroidManifest.xml',['../index.html#autotoc_md6',1,'']]],
+  ['3_20implement_20the_20sdkfeaturestatedelegate_20to_20be_20notified_20of_20any_20update_20errors_4',['3. Implement the SdkFeatureStateDelegate to be Notified of any Update Errors',['../index.html#autotoc_md35',1,'']]],
+  ['3_20implement_20the_20sdkfeaturestatelistener_20to_20listen_20for_20update_20errors_5',['3. Implement the SdkFeatureStateListener to Listen for Update Errors',['../index.html#autotoc_md30',1,'']]],
+  ['3_20manual_20connect_6',['3. Manual Connect',['../index.html#autotoc_md16',1,'']]],
+  ['34_7',['I Get Issues After Updating my App&apos;s Target to SDK 34',['../index.html#autotoc_md55',1,'']]],
+  ['35_8',['I Get Issues After Updating my App&apos;s Target to SDK 35',['../index.html#autotoc_md56',1,'']]]
 ];

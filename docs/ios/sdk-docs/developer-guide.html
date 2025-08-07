@@ -327,17 +327,19 @@
 <ul>
 <li><a href="#configure_logging">Configure Logging (Optional)</a></li>
 <li><a href="#ts_no_feature_updates">I&rsquo;m not Receiving Mobile Credential Updates (i.e. Digital ID or Salto) from the Cloud</a></li>
+<li><a href="#ts_wallet_list_empty">Why is WalletUpdateDelegate returning empty Wallet list?</a></li>
 <li><a href="#ts_wallet_provisioning_fail">Wallet Pass Provisioning is Failing</a></li>
-<li><a href="#ts_wallet_migration">Wallet Feature Calls <code>onWalletMigrationDetected</code> Within the Provisioning Flow</a></li>
+<li><a href="#ts_wallet_migration">Wallet Feature Calls onWalletMigrationDetected Within the Provisioning Flow</a></li>
 <li><a href="#ts_wallet_show_add_button">User Has Passes on Both Phone and Watch but <code>shouldShowAddToWalletButton</code> Function is Suggesting Showing the Button</a></li>
 <li><a href="#ts_wallet_deactivate">Deactivating the Mobile Credential Doesn&rsquo;t Deactivate the Apple Pass</a></li>
 <li><a href="#ts_wallet_no_access">Add Apple Pass is Active But the User is Getting Access Denied at the Reader</a></li>
+<li><a href="#ts_wallet_button_recommendations_considerations">Key Recommendations and Considerations When Displaying the &ldquo;Add to Apple Wallet&rdquo; Button</a>.<br></li>
 </ul></li>
 </ul>
 <h2 id='prerequisites-a-name-prerequisites-a' class='heading'>Prerequisites<a name=prerequisites></a></h2>
 
 <ul>
-<li>This developer guide references version 17.1 of the Gallagher Mobile Connect SDK for iOS</li>
+<li>This developer guide references version 17.2 of the Gallagher Mobile Connect SDK for iOS</li>
 <li>Xcode 16 - This document tested against Xcode 16.4 (16F6)</li>
 <li>An app targeting iOS 12 or later</li>
 <li>Swift 6.0 - The functionality and interfaces provided by the SDK are swift; you must use swift to access them.</li>
@@ -358,7 +360,7 @@
 <p>Example:
 <img src="img/xcode-embedded-binaries.png" alt="Xcode project settings embedded binaries"></p>
 
-<p><em>Note:</em> The sample project may contain a reference to <code>SaltoJustINMobileSDK.xcframework</code>.<br>
+<p><strong><em>Note:</em></strong> The sample project may contain a reference to <code>SaltoJustINMobileSDK.xcframework</code>.<br>
 If your Command Centre server does not have a Salto integration, then you will not need this, and you can remove the reference.</p>
 <h3 id='3-configure-your-application-plist' class='heading'>3. Configure Your Application - Plist</h3>
 
@@ -913,7 +915,7 @@ Called after the access transaction has completed successfully, or if an error h
 
 </code></pre>
 
-<p><strong>Reference:</strong> 
+<p><strong>Reference:</strong><br>
 <a href="Protocols/SaltoAccessDelegate.html">SaltoAccessDelegate</a><br>
 <a href="Structs/SaltoAccessResult.html">SaltoAccessResult</a> - An enum of potential access results<br>
 <a href="Enums/SaltoAccessDecision.html">SaltoAccessDecision</a> - An object containing a Salto Access Result and audit event trail<br>
@@ -1087,71 +1089,88 @@ For more information refer to &ldquo;Discovery of Readers&rdquo; section mention
 <li>iPhone running iOS 16 or later.</li>
 <li>(Optional) paired Apple Watch running watchOS 10 or later.</li>
 </ul></li>
-<li>Gallagher requires that you provide your Apple <em>App ID (TeamID.AppBundleID)</em> and <em>App Store ID</em> so it can be configured when creating your site&rsquo;s pass details and template, so that the back of the pass can link to your app.<br>
+<li>Gallagher requires that you provide your Apple <strong><em>App ID (TeamID.AppBundleID)</em></strong> and <strong><em>App Store ID</em></strong> so it can be configured when creating your site&rsquo;s pass details and template, so that the back of the pass can link to your app.<br>
 Other <em>optional</em> details:
 
 <ul>
-<li>App Launch URL (Optional): A URL to be passed to the associated app when launching it from the linked app section of the pass, setting this property requires providing Gallagher your App Store ID.</li>
-<li>App URL Scheme (Optional): URL scheme that the app is registered for to deep link from transaction notifications, setting this property requires providing Gallagher your App Store ID.</li>
+<li><strong>App Launch URL (Optional)</strong>: A URL to be passed to the associated app when launching it from the linked app section of the pass, setting this property requires providing Gallagher your App Store ID.</li>
+<li><strong>App URL Scheme (Optional)</strong>: URL scheme that the app is registered for to deep link from transaction notifications, setting this property requires providing Gallagher your App Store ID.</li>
 </ul></li>
+<li>You may consider using a testing environment during development to test your Wallet feature integration. This can be achieved using Sandbox iCloud accounts and non-production Gallagher and Apple services; details can be found on the <strong>Gallagher Security Hub SDK</strong> page.</li>
 </ul>
 <h3 id='application-required-entitlement' class='heading'>Application Required Entitlement</h3>
 
 <p>To allow a user to provision a pass to Apple Wallet from within your app, you will need to request the required entitlement from Apple.</p>
-<h4 id='1-request-entitlement-from-apple' class='heading'>1. Request Entitlement from Apple</h4>
+<h4 id='strong-1-request-the-entitlement-from-apple-strong' class='heading'><strong>1. Request the Entitlement from Apple</strong></h4>
 
 <p>Request <strong><em>com.apple.developer.contactless-payment-pass-provisioning:[“shareablecredential”]</em></strong> entitlement by emailing <a href="mailto:applepayentitlements@apple.com">applepayentitlements@apple.com</a> with the following information:</p>
 
 <ul>
 <li>Your proposed use cases for access pass provisioning.</li>
 <li>The country your business headquarters is located.</li>
-<li>Organization name.</li>
+<li>Organisation name.</li>
 <li>Application name.</li>
 <li>Team ID (Your Apple Developer account Team ID).</li>
-<li>App ID (Your app&rsquo;s App Store ID).</li>
+<li>App ID (Your app&rsquo;s App Store ID).<br></li>
 </ul>
 
+<p>You may use the example email below to request the entitlement. Be sure to replace the placeholders with your app, organisation, and contact details:
+<a href="wallet_entitlement_email_request_template.html">Email Entitlement Request Template</a>  </p>
+
 <p>You will <strong>receive an email confirmation</strong> if your application is granted the entitlement.</p>
-<h4 id='2-create-a-provisioning-profile' class='heading'>2. Create a Provisioning Profile</h4>
+<h4 id='strong-2-create-the-provisioning-profile-strong' class='heading'><strong>2. Create the Provisioning Profile</strong></h4>
 
 <p>After Apple grants you the entitlement, add the entitlement to your application provisioning profile. <em>Ensure that you use the same profile to develop the app in Xcode.</em></p>
 
 <ul>
 <li>Create a new identifier or update your existing app identifier with an extra capability by selecting <strong>Contactless Pass Provisioning (SharableCredential)</strong> Under the Additional Capabilities tab.</li>
-<li>Add a new provisioning profile or update your existing one to use the identifier you created in the previous step. 
-<em>**Note:</em>* For Entitlements, select Default to include the entitlement in the profile automatically.*</li>
+<li>Add a new provisioning profile or update your existing one to use the identifier you created in the previous step.<br>
+<strong><em>Note:</em></strong> For Entitlements, select Default to include the entitlement in the profile automatically.</li>
 </ul>
-<h4 id='3-create-a-provisioning-profile' class='heading'>3. Create a Provisioning Profile</h4>
+<h4 id='strong-3-adding-the-provisioning-profile-strong' class='heading'><strong>3. Adding the Provisioning Profile</strong></h4>
 
-<p>After you generate and download the provisioning profile, add the profile in Xcode to use within your application, making sure that you have selected the correct profile under Signing &amp; Capabilities tab of the project.</p>
+<p>After you generate and download the provisioning profile, add the profile in Xcode to use within your application, make sure that you have unchecked &ldquo;Automatically manage signing&rdquo;, select the correct profile under &ldquo;Signing &amp; Capabilities&rdquo; tab of the project, and add Contactless Pass Provisioning (ShareableCredential) capability.</p>
+
+<p>To add the entitlement you can:</p>
 
 <ul>
-<li>Create an entitlements plist for your app with the following key:</li>
+<li>Use Xcode<br>
+<img src="img/add_wallet_entitlement.png" alt="Xcode project settings Signing &amp; Capabilities"><br></li>
+</ul>
+
+<p><strong>Or</strong>   </p>
+
+<ul>
+<li>Create/edit the entitlements plist file for your app with the following key:</li>
 </ul>
 <pre class="highlight plist"><code><span class="p">&lt;</span><span class="mh">d</span><span class="err">i</span><span class="mh">c</span><span class="err">t</span><span class="p">&gt;</span><span class="w">
     </span><span class="p">&lt;</span><span class="err">k</span><span class="mh">e</span><span class="err">y</span><span class="p">&gt;</span><span class="l">com.apple.developer.contactless-payment-pass-provisioning</span><span class="p">&lt;</span><span class="err">/k</span><span class="mh">e</span><span class="err">y</span><span class="p">&gt;</span><span class="w">
-    </span><span class="p">&lt;</span><span class="err">tru</span><span class="mh">e</span><span class="err">/</span><span class="p">&gt;</span><span class="w">
+    </span><span class="p">&lt;</span><span class="mh">a</span><span class="err">rr</span><span class="mh">a</span><span class="err">y</span><span class="p">&gt;</span><span class="w">
+        </span><span class="p">&lt;</span><span class="err">string</span><span class="p">&gt;</span><span class="l">shareablecredential</span><span class="p">&lt;</span><span class="err">/string</span><span class="p">&gt;</span><span class="w">
+    </span><span class="p">&lt;</span><span class="err">/</span><span class="mh">a</span><span class="err">rr</span><span class="mh">a</span><span class="err">y</span><span class="p">&gt;</span><span class="w">
 </span><span class="p">&lt;</span><span class="err">/</span><span class="mh">d</span><span class="err">i</span><span class="mh">c</span><span class="err">t</span><span class="p">&gt;</span><span class="w">
 </span></code></pre>
 
 <ul>
-<li>Update your project to use the entitlement plist by setting <strong><em>Build Settings &gt; Code Signing Entitlement</em></strong> to point to the new entitlement file you created.</li>
+<li>Make sure your project uses the entitlement plist by setting <strong><em>Build Settings &gt; Code Signing Entitlement</em></strong> to point to the entitlement file you created/edited.</li>
 </ul>
 
-<p><strong><em>Note:</em></strong> For an example of the entitlement file, refer to <code>mobileconnectsdksample.entitlements</code> in the SDK sample app.</p>
+<p><strong><em>Note:</em></strong> For an example of the entitlement file, refer to <code>mobileconnectsdksample.entitlements</code> in the SDK sample app.  </p>
+
+<p><br></p>
 <h3 id='configure-mobile-connect-sdk-to-include-wallet-feature' class='heading'>Configure Mobile Connect SDK to Include Wallet Feature</h3>
-<h4 id='1-enable-the-wallet-feature-in-the-sdk' class='heading'>1. Enable the Wallet Feature in the SDK</h4>
+<h4 id='strong-1-enable-the-wallet-feature-in-the-sdk-strong' class='heading'><strong>1. Enable the Wallet Feature in the SDK</strong></h4>
 
 <p>Add <code><a href="Structs/SdkFeature.html#/s:21GallagherMobileAccess10SdkFeatureV6walletACvpZ">SdkFeature.wallet</a></code> to the list of enabled features passed into the <code>MobileAccessProvider.configure</code> method call.</p>
 
 <p><strong>Reference:</strong><br>
 <a href="Classes/MobileAccessProvider.html">MobileAccessProvider</a><br>
 <a href="Structs/SdkFeature.html">SdkFeature</a>  </p>
-<h4 id='2-implement-the-walletupdatedelegate' class='heading'>2. Implement the WalletUpdateDelegate</h4>
+<h4 id='strong-2-implement-the-walletupdatedelegate-strong' class='heading'><strong>2. Implement the WalletUpdateDelegate</strong></h4>
 
-<p>This is a delegate that handles Wallet updates. Its single callback function <code>onWalletsUpdated</code> will notify of Wallet changes and availability of related passes in the Apple Wallet app.</p>
+<p>This delegate handles updates to the Wallet. Its callback function <code>onWalletsUpdated</code> notifies the app about changes to Wallets and the availability of related passes in the Apple Wallet app.</p>
 
-<p>Add the delegate using the <code>addWalletUpdateDelegate</code> method. After a delegate is added, it will first be called back with the existing list of available Wallets to be added. After this, the delegate will be called back with any updates as they are received from the Gallagher Cloud or from the Wallet app. </p>
+<p>Add the delegate using the <code>addWalletUpdateDelegate</code> method. After a delegate is added, it will first be called back with the existing list of available Wallets to be added. After this, the delegate will be called back with any updates as they are received from the Gallagher Cloud or from the Wallet app.</p>
 
 <p>Any calls to <code>addWalletUpdateDelegate</code> should be balanced by a call to <code>removeWalletUpdateDelegate</code> to prevent memory leaks.</p>
 
@@ -1196,7 +1215,7 @@ Other <em>optional</em> details:
 <a href="Structs/Wallet.html">Wallet</a><br>
 <a href="Protocols/WalletUpdateDelegate.html">WalletUpdateDelegate</a><br>
 <a href="Enums/WalletUpdateError.html">WalletUpdateError</a>  </p>
-<h4 id='3-implement-the-sdkfeaturestatedelegate-to-be-notified-of-any-update-errors' class='heading'>3. Implement the SdkFeatureStateDelegate to be Notified of Any Update Errors</h4>
+<h4 id='strong-3-implement-the-sdkfeaturestatedelegate-to-be-notified-of-any-update-errors-strong' class='heading'><strong>3. Implement the SdkFeatureStateDelegate to be Notified of Any Update Errors</strong></h4>
 
 <p>Wallet updates are received from the Gallagher Cloud.<br>
 Connection problems and other issues may occur which prevent updates from being received. This delegate can be implemented to be notified when such errors or state changes occur.</p>
@@ -1228,51 +1247,38 @@ Connection problems and other issues may occur which prevent updates from being 
 <a href="Structs/SdkFeature.html">SdkFeature</a><br>
 <a href="Enums/SdkFeatureState.html">SdkFeatureState</a><br>
 <a href="Protocols/SdkFeatureStateDelegate.html">SdkFeatureStateDelegate</a>  </p>
-<h4 id='4-quot-add-to-apple-wallet-quot-button' class='heading'>4. &ldquo;Add to Apple Wallet&rdquo; Button</h4>
+<h4 id='strong-4-quot-add-to-apple-wallet-quot-button-strong' class='heading'><strong>4. &ldquo;Add to Apple Wallet&rdquo; Button</strong></h4>
 
-<p>The <em>&ldquo;Add to Apple Wallet&rdquo;</em> button is how a user triggers the process of provisioning a pass to the device and paired watch if one exists.</p>
+<p>The <em>&ldquo;Add to Apple Wallet&rdquo;</em> button is how a user triggers the process of provisioning a pass to the device and paired watch if one exists.   </p>
 
 <ul>
-<li>Add to your view a button with class type <code>PKAddPassButton</code>. This will ensure that you are following the <a href="https://developer.apple.com/wallet/add-to-apple-wallet-guidelines/">Add to Apple Wallet guidelines</a>.</li>
-<li>Display the button to indicate to the user that a pass can be added, you can achieve that by checking the <code><a href="Structs/Wallet.html">Wallet</a></code> instance <code>shouldShowAddToWalletButton</code>.</li>
-<li><em>(Optional)</em> You can navigate to the pass once provisioned in the Wallet app by using the <code><a href="Structs/Wallet.html">Wallet</a></code> instance <code>passUrl</code>.<br></li>
+<li><p>Add the button to your view<br>
+Use the class type <code>PKAddPassButton</code> to add the button to your view. This ensures compliance with Apple’s <a href="https://developer.apple.com/wallet/add-to-apple-wallet-guidelines/">Add to Apple Wallet guidelines</a>.</p></li>
+<li><p>Display the button when appropriate<br>
+Only show the &ldquo;Add to Apple Wallet&rdquo; button when a pass is available to add. You can determine this using one of the approaches listed below.<br>
+For more information, see <a href="#ts_wallet_button_recommendations_considerations">Key Recommendations and Considerations When Displaying the &ldquo;Add to Apple Wallet&rdquo; Button</a>.<br>
+<strong><em>Note:</em></strong> The behavior of <code>shouldShowAddToWalletButton</code> and <code>addToWalletStatus</code> depends on whether your App ID (TeamID.AppBundleID) is correctly configured in the Apple Pass your site uses. See <a href="#wallet_prerequisites">Wallet Feature Pre-requisites</a> for the required configuration details. </p>
+
+<ul>
+<li><strong><code><a href="Structs/Wallet.html#/s:21GallagherMobileAccess6WalletV015shouldShowAddToD6ButtonSbyF">Wallet.shouldShowAddToWalletButton()</a></code> (Simple Logic)</strong><br>
+Use this for a basic visibility toggle based on pass availability on the iPhone or Apple Watch. The following table explains the logic behind the helper function:<br>
+<img src="img/show_wallet_button_logic.png" alt="Show Add to Wallet Button"></li>
+<li><strong><code><a href="Structs/Wallet.html#/s:21GallagherMobileAccess6WalletV05addToD6StatusAA03Addfd7DisplayG0Vvp">Wallet.addToWalletStatus</a></code> (Detailed Status)</strong><br>
+Use this for finer control to allow you to tailor the UI based on the pass status for the iPhone and/or Apple Watch.<br>
+<img src="img/add_wallet_status.png" alt="Add to Wallet Status"><br></li>
+</ul></li>
+<li><p>(Optional) Navigate to the Pass After Provisioning<br>
+Use the Wallet instance&rsquo;s passUrl to link users directly to the pass in the Wallet app once provisioning is complete.</p></li>
 </ul>
 
-<p><strong><em>Note:</em></strong> For the full example, refer to <code>RegistrationsViewController.swift</code> in the SDK sample app. </p>
-
-<p>The following table explains the logic behind the helper function of the &ldquo;Add to Apple Wallet&rdquo; button:</p>
-
-<table><thead>
-<tr>
-<th>On Primary Device</th>
-<th>On Paired Device</th>
-<th>Display Logic</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Pass exists</td>
-<td>Pass exists</td>
-<td>Don&rsquo;t display button</td>
-</tr>
-<tr>
-<td>Pass exists</td>
-<td>Pass doesn&rsquo;t exist</td>
-<td>display button</td>
-</tr>
-<tr>
-<td>Pass doesn&rsquo;t exist</td>
-<td>Pass exists, or pass doesn&rsquo;t exist</td>
-<td>Display button</td>
-</tr>
-</tbody></table>
-
-<p><strong><em>Note:</em></strong> <code>shouldShowAddToWalletButton</code> value will always be <code>true</code> if your App ID (TeamID.AppBundleID) is not configured/added to the the Apple pass details used for your site, refer to <a href="#wallet_prerequisites">Wallet Feature Pre-requisites</a> for the required data. </p>
+<p><strong><em>Note:</em></strong> For the code example, refer to <code>RegistrationsViewController.swift</code> in the SDK sample app. </p>
 
 <p><strong>Reference:</strong><br>
 <a href="Structs/Wallet.html">Wallet</a>  </p>
-<h4 id='5-provision-a-pass' class='heading'>5. Provision a Pass</h4>
+<h4 id='strong-5-provision-a-pass-strong' class='heading'><strong>5. Provision a Pass</strong></h4>
 
-<p>Once you add the <em>&ldquo;Add to Apple Wallet&rdquo;</em> button in the app, you can use <code>startProvisioningWallet</code> method to initiate provisioning a pass. The SDK will asynchronously call the callback methods on the <code><a href="Protocols/WalletProvisioningDelegate.html">WalletProvisioningDelegate</a></code> to inform you of success or failure.</p>
+<p>Once you add the <em>&ldquo;Add to Apple Wallet&rdquo;</em> button in the app, you can use <code>startProvisioningWallet</code> method to initiate provisioning a pass. The SDK will asynchronously call the callback methods on the <code><a href="Protocols/WalletProvisioningDelegate.html">WalletProvisioningDelegate</a></code> to inform you of success or failure.<br>
+<strong><em>Note:</em></strong> Do not attempt to start pass provisioning unless you have received a valid <code><a href="Structs/Wallet.html">Wallet</a></code> instance via the <code><a href="Protocols/WalletUpdateDelegate.html">WalletUpdateDelegate</a></code>.</p>
 
 <p>The Mobile Connect SDK provides a function to trigger pass provisioning for a user. The function is asynchronous and can be triggered from any thread. The result is returned using  <code><a href="Protocols/WalletProvisioningDelegate.html">WalletProvisioningDelegate</a></code></p>
 <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">addWallet</span><span class="p">(</span><span class="nv">wallet</span><span class="p">:</span> <span class="kt">Wallet</span><span class="p">?)</span> <span class="p">{</span>
@@ -1341,7 +1347,7 @@ Connection problems and other issues may occur which prevent updates from being 
 
 <p>All properties are optional.</p>
 
-<p><strong>Reference:</strong>
+<p><strong>Reference:</strong><br>
 <a href="Structs/MobileAccessLocalization.html">MobileAccessLocalization</a>  </p>
 <h4 id='1-notification-details' class='heading'>1. Notification Details</h4>
 
@@ -1385,8 +1391,10 @@ Connection problems and other issues may occur which prevent updates from being 
 
 <p><strong>Reference:</strong><br>
 <a href="Typealiases.html#/s:23GallagherMobileAccessNN29AuthenticationDetailsProvidera">AuthenticationDetailsProvider</a>  </p>
+
+<p><br></p>
 <h2 id='troubleshooting-a-name-troubleshooting-a' class='heading'>Troubleshooting<a name=troubleshooting></a></h2>
-<h3 id='configuring-logging-optional-a-name-configure_logging-a' class='heading'>Configuring Logging (Optional)<a name=configure_logging></a></h3>
+<h3 id='strong-configuring-logging-optional-strong-a-name-configure_logging-a' class='heading'><strong>Configuring Logging (Optional)</strong><a name=configure_logging></a></h3>
 
 <p>If you encounter unexpected errors or behaviour, you may wish to enable logging from the SDK to help with troubleshooting.</p>
 
@@ -1401,13 +1409,30 @@ To enable logging, you have two options:</p>
 <p>For more information, please refer to the SwiftDocs</p>
 
 <p>For an example, please see the file <code>AppDelegate.swift</code> in the iOS SDK sample application, which redirects the SDK&rsquo;s internal logging to the system-wide <code>os_log</code> infrastructure.</p>
-<h3 id='i-39-m-not-receiving-mobile-credential-updates-i-e-digital-id-or-salto-from-the-cloud-a-name-ts_no_feature_updates-a' class='heading'>I&rsquo;m not Receiving Mobile Credential Updates (i.e. Digital ID or Salto) from the Cloud<a name=ts_no_feature_updates></a></h3>
+
+<p><br></p>
+<h3 id='strong-i-39-m-not-receiving-mobile-credential-updates-i-e-digital-id-or-salto-from-the-cloud-strong-a-name-ts_no_feature_updates-a' class='heading'><strong>I&rsquo;m not Receiving Mobile Credential Updates (i.e. Digital ID or Salto) from the Cloud</strong><a name=ts_no_feature_updates></a></h3>
 
 <p>Ensure you have added yourself as a delegate and are requesting to sync with the Cloud i.e.</p>
 <pre class="highlight swift"><code><span class="n">_mobileAccess</span><span class="o">.</span><span class="nf">addDigitalIdDelegate</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
 <span class="n">_mobileAccess</span><span class="o">.</span><span class="nf">syncCredentialItemUpdates</span><span class="p">()</span>
 </code></pre>
-<h3 id='wallet-pass-provisioning-is-failing-a-name-ts_wallet_provisioning_fail-a' class='heading'>Wallet Pass Provisioning is Failing<a name=ts_wallet_provisioning_fail></a></h3>
+
+<p><br></p>
+<h3 id='strong-why-is-code-walletupdatedelegate-code-returning-empty-code-wallet-code-list-strong-a-name-ts_wallet_list_empty-a' class='heading'><strong>Why is <code><a href="Protocols/WalletUpdateDelegate.html">WalletUpdateDelegate</a></code> returning empty <code><a href="Structs/Wallet.html">Wallet</a></code> list?</strong><a name=ts_wallet_list_empty></a></h3>
+
+<p>Make sure that the Apple Employee Access Badge feature is fully configured in the Command Centre Server:  </p>
+
+<ul>
+<li>The site must be licensed and enabled to use the feature.<br></li>
+<li>The site is configured with valid wallet keys, TCI and Apple Employee Access Badge Type.<br></li>
+<li>The Mobile Credential registered on the device is configured and linked correctly to the Apple Employee Access Badge Type in your Command Centre server.<br></li>
+</ul>
+
+<p><img src="img/apple_employee_badge_type.png" alt="Apple Employee Access Badge Type"></p>
+
+<p><br></p>
+<h3 id='strong-wallet-pass-provisioning-is-failing-strong-a-name-ts_wallet_provisioning_fail-a' class='heading'><strong>Wallet Pass Provisioning is Failing</strong><a name=ts_wallet_provisioning_fail></a></h3>
 
 <p>Provisioning a pass can fail for multiple reasons at different parts of the flow, all failures are returned as <code><a href="Enums/WalletProvisioningError.html">WalletProvisioningError</a></code>:</p>
 
@@ -1431,32 +1456,61 @@ Here are some of the possible failures:
 </ul></li>
 </ul>
 
-<p><strong>Note:</strong> Due to security concerns, to resolve any binding or device limit failures the site must contact Gallagher Technical Support.</p>
+<p><strong><em>Note:</em></strong> Due to security concerns, to resolve any binding or device limit failures the site must contact Gallagher Technical Support.</p>
 
 <p><strong>Reference:</strong><br>
 <a href="Enums/WalletProvisioningError.html">WalletProvisioningError</a><br>
 <a href="Enums/WalletPrepareProvisioningErrorCode.html">WalletPrepareProvisioningErrorCode</a>  </p>
-<h3 id='wallet-feature-calls-code-onwalletmigrationdetected-code-within-the-provisioning-flow-a-name-ts_wallet_migration-a' class='heading'>Wallet Feature Calls <code>onWalletMigrationDetected</code> Within the Provisioning Flow<a name=ts_wallet_migration></a></h3>
+
+<p><br></p>
+<h3 id='strong-wallet-feature-calls-code-onwalletmigrationdetected-code-within-the-provisioning-flow-strong-a-name-ts_wallet_migration-a' class='heading'><strong>Wallet Feature Calls <code>onWalletMigrationDetected</code> Within the Provisioning Flow</strong><a name=ts_wallet_migration></a></h3>
 
 <p>A user is allowed only one pass per device type (iPhone and pair Apple Watch). If the user gets a new iPhone and would like to migrate the pass to the new device then a new Mobile Credential will be required to be issued and registered for the new device and upon clicking the &ldquo;Add to Apple Wallet&rdquo; button on the new device a migration will be detected by the Mobile Connect SDK. When the migration is detected, it is recommended to notify and allow the user to confirm the migration before continuing.</p>
 
 <p>To migrate a pass from one paired watch to another, the user will need to remove the pass from the older watch, unpair the old watch, and then re-add the pass to the new watch via the app &ldquo;Add to Apple Wallet&rdquo; button.</p>
 
-<p><strong>Notes:</strong> </p>
+<p><strong><em>Notes:</em></strong> </p>
 
 <ul>
 <li>Only 1 migration per device type is allowed every 90 days.<br></li>
 <li>Migrating a pass to a new device will remove the pass from the older device.</li>
 </ul>
-<h3 id='user-has-passes-on-both-phone-and-watch-but-code-shouldshowaddtowalletbutton-code-function-is-suggesting-showing-the-button-a-name-ts_wallet_show_add_button-a' class='heading'>User Has Passes on Both Phone and Watch but <code>shouldShowAddToWalletButton</code> Function is Suggesting Showing the Button<a name=ts_wallet_show_add_button></a></h3>
+
+<p><br></p>
+<h3 id='strong-user-has-passes-on-both-phone-and-watch-but-code-shouldshowaddtowalletbutton-code-function-is-suggesting-showing-the-button-strong-a-name-ts_wallet_show_add_button-a' class='heading'><strong>User Has Passes on Both Phone and Watch but <code>shouldShowAddToWalletButton</code> Function is Suggesting Showing the Button</strong><a name=ts_wallet_show_add_button></a></h3>
 
 <p>The function can falsely report that the button should be shown. This may be due to a misconfiguration of the pass details in the Apple Business Register (ABR) portal. The pass details need to be configured with your App ID (TeamID.AppBundleID) in order for the SDK to be able to access and filter the list of passes provided by Apple&rsquo;s PassKit library. Refer to <a href="#wallet_prerequisites">Wallet Feature Pre-requisites</a> for the required data.</p>
-<h3 id='deactivating-the-mobile-credential-doesn-39-t-deactivate-the-apple-pass-a-name-ts_wallet_deactivate-a' class='heading'>Deactivating the Mobile Credential Doesn&rsquo;t Deactivate the Apple Pass<a name=ts_wallet_deactivate></a></h3>
+
+<p><br></p>
+<h3 id='strong-deactivating-the-mobile-credential-doesn-39-t-deactivate-the-apple-pass-strong-a-name-ts_wallet_deactivate-a' class='heading'><strong>Deactivating the Mobile Credential Doesn&rsquo;t Deactivate the Apple Pass</strong><a name=ts_wallet_deactivate></a></h3>
 
 <p>Mobile Credentials are used <strong>only</strong> to provision a pass to the Apple Wallet App. Once the pass is provisioned, it must be managed from within the Apple Wallet app or from the user’s iCloud account.</p>
-<h3 id='add-apple-pass-is-active-but-the-user-is-getting-access-denied-at-the-reader-a-name-ts_wallet_no_access-a' class='heading'>Add Apple Pass is Active But the User is Getting Access Denied at the Reader<a name=ts_wallet_no_access></a></h3>
 
-<p>There could be delays between successfully adding Apple pass to the Wallet app and syncing it down to on-premise Command Centre Server and Controller. In most cases the syncing is not noticeable.</p>
+<p><br></p>
+<h3 id='strong-add-apple-pass-is-active-but-the-user-is-getting-access-denied-at-the-reader-strong-a-name-ts_wallet_no_access-a' class='heading'><strong>Add Apple Pass is Active But the User is Getting Access Denied at the Reader</strong><a name=ts_wallet_no_access></a></h3>
+
+<p>There could be delays between successfully adding Apple pass to the Wallet app and syncing it down to on-premise Command Centre Server and Controller. In most cases the syncing is not noticeable.<br>
+Also make sure that &ldquo;Mobile Wallet&rdquo; card technology is enabled for the site&rsquo;s readers.</p>
+
+<p><br></p>
+<h3 id='strong-key-recommendations-and-considerations-when-displaying-the-quot-add-to-apple-wallet-quot-button-strong-a-name-ts_wallet_button_recommendations_considerations-a' class='heading'><strong>Key Recommendations and Considerations When Displaying the &ldquo;Add to Apple Wallet&rdquo; Button</strong><a name=ts_wallet_button_recommendations_considerations></a></h3>
+
+<ul>
+<li>The &ldquo;Add to Apple Wallet&rdquo; button provisions the pass to both the user’s iPhone and any paired Apple Watch, if available. Provisioning the pass to individual device types is not supported; the pass is added to both the user’s iPhone and any paired Apple Watch simultaneously.</li>
+<li>Always start your UI with the button <strong>hidden</strong> by default.</li>
+<li>Don&rsquo;t attempt to display the button if you don&rsquo;t have a valid <code><a href="Structs/Wallet.html">Wallet</a></code> instance received via <code><a href="Protocols/WalletUpdateDelegate.html">WalletUpdateDelegate</a></code>.</li>
+<li>Keep the button hidden while <code><a href="Protocols/MobileAccess.html#/s:21GallagherMobileAccess0bC0P23startProvisioningWallet_18passThumbnailImage0G11Description24presentingViewController8delegateyAA0F0V_So7UIImageCSSSo06UIViewM0CAA0fE8Delegate_ptF">MobileAccess.startProvisioningWallet(_:passThumbnailImage:passDescription:presentingViewController:delegate:)</a></code> is in progress to prevent duplicate provisioning requests.</li>
+<li>Display a loading indicator to inform the user that the provisioning process is ongoing. Since this is an asynchronous operation, it may take up to a few minutes to complete.</li>
+<li>If an error occurs in <code><a href="Protocols/WalletProvisioningDelegate.html#/s:21GallagherMobileAccess26WalletProvisioningDelegateP02ondE9Completed_9succeeded5erroryAA0D0V_SbAA0dE5ErrorOSgtF">WalletProvisioningDelegate.onWalletProvisioningCompleted(_:succeeded:error:)</a></code>, you can re-enable the button immediately so the user can retry the provisioning process where applicable.</li>
+<li>Upon successful provisioning, reload your view either:
+
+<ul>
+<li>After a short delay (minimum 0.5 seconds), or</li>
+<li>(preferable) Upon receiving the first wallet update via <code><a href="Protocols/WalletUpdateDelegate.html#/s:21GallagherMobileAccess20WalletUpdateDelegateP16onWalletsUpdatedyySayAA0D0VG_AGtF">WalletUpdateDelegate.onWalletsUpdated(_:_:)</a></code>, This helps prevent redundant provisioning requests caused by premature UI updates.</li>
+</ul></li>
+<li>Consider showing the “Add to Apple Wallet” button only if neither the phone nor the watch has the pass added. If the pass is available on one device but not the other, provide informative UI to indicate where the pass is currently available.</li>
+<li>Provisioning to Apple Watch can be delayed if the watch is locked or has a low battery. To ensure a smoother and clearer user experience, consider informing your app users to unlock and charge their Apple Watch before adding a pass.</li>
+</ul>
 
           </div>
         </section>
@@ -1465,7 +1519,7 @@ Here are some of the possible failures:
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-02-10)</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-08-05)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hg-ny-BPj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hg-ny-BPj">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="credentialCell" rowHeight="236" id="RAr-RR-4J1" customClass="CredentialCell" customModule="mobileconnectsdksample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="375" height="236"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="credentialCell" rowHeight="255" id="RAr-RR-4J1" customClass="CredentialCell" customModule="mobileconnectsdksample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="375" height="255"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RAr-RR-4J1" id="4xN-2B-k1r">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Facility Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCm-mF-9P0">
@@ -67,18 +67,24 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-Nn-dCZ" userLabel="WalletView">
-                                            <rect key="frame" x="16" y="129.5" width="343" height="85.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-Nn-dCZ" userLabel="WalletView">
+                                            <rect key="frame" x="16" y="129.5" width="343" height="104.5"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalletStatusLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wl-1c-5iR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFd-pn-VX9" userLabel="AddToWalletButton" customClass="PKAddPassButton">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="41.5"/>
+                                                    <rect key="frame" x="0.0" y="22" width="343" height="34.5"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="addToWalletClicked:" destination="RAr-RR-4J1" eventType="touchUpInside" id="9C4-JT-bwk"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb3-Fh-aSx" userLabel="ViewInWalletButton">
-                                                    <rect key="frame" x="0.0" y="41.5" width="343" height="44"/>
+                                                    <rect key="frame" x="0.0" y="60.5" width="343" height="44"/>
                                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="X7F-ya-raf"/>
@@ -124,6 +130,7 @@
                                     <outlet property="_secondFactorLabel" destination="gmo-aK-T60" id="XTH-09-xXt"/>
                                     <outlet property="_statusLabel" destination="3jo-yZ-2Ki" id="lWx-fU-RXy"/>
                                     <outlet property="_viewInWalletButton" destination="Lb3-Fh-aSx" id="zUe-6B-DOv"/>
+                                    <outlet property="_walletStatusLabel" destination="8wl-1c-5iR" id="sSB-xp-rqt"/>
                                     <outlet property="_walletView" destination="dlm-Nn-dCZ" id="MAk-9H-IsW"/>
                                 </connections>
                             </tableViewCell>

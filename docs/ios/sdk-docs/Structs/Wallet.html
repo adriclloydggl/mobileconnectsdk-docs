@@ -538,6 +538,36 @@ Note: The function will return false if your App ID (TeamID.AppBundleID) is not 
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:21GallagherMobileAccess6WalletV05addToD6StatusAA03Addfd7DisplayG0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/addToWalletStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/s:21GallagherMobileAccess6WalletV05addToD6StatusAA03Addfd7DisplayG0Vvp">addToWalletStatus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Helper function that returns the availability status for adding passes to Apple Wallet
+on the user’s phone and watch, such as <code>.available</code>, <code>.provisioned</code>, or <code>.notApplicable</code>.</p>
+
+<p>Use the returned <code><a href="../Structs/AddToWalletDisplayStatus.html">AddToWalletDisplayStatus</a></code> to check each device’s current pass status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">addToWalletStatus</span><span class="p">:</span> <span class="kt"><a href="../Structs/AddToWalletDisplayStatus.html">AddToWalletDisplayStatus</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:21GallagherMobileAccess6WalletV08canAddToD0AA0fgD13DisplayStatusVvp"></a>
                     <a name="//apple_ref/swift/Property/canAddToWallet" class="dashAnchor"></a>
                     <a class="token" href="#/s:21GallagherMobileAccess6WalletV08canAddToD0AA0fgD13DisplayStatusVvp">canAddToWallet</a>
@@ -548,40 +578,20 @@ Note: The function will return false if your App ID (TeamID.AppBundleID) is not 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Helper function returns true if the pass has not been provisioned to the device or to a paired watch, otherwise returns false.</p>
+                        <p>This method is obsolete.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Deprecated. Use <code><a href="../Structs/Wallet.html#/s:21GallagherMobileAccess6WalletV05addToD6StatusAA03Addfd7DisplayG0Vvp">addToWalletStatus</a></code> instead.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">canAddToWallet</span><span class="p">:</span> <span class="kt"><a href="../Structs/AddToWalletDisplayStatus.html">AddToWalletDisplayStatus</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:21GallagherMobileAccess6WalletV05emptyD0ACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/emptyWallet" class="dashAnchor"></a>
-                    <a class="token" href="#/s:21GallagherMobileAccess6WalletV05emptyD0ACvpZ">emptyWallet</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">emptyWallet</span><span class="p">:</span> <span class="kt">Wallet</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">deprecated</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="s">"Use `addToWalletStatus` instead."</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">canAddToWallet</span><span class="p">:</span> <span class="kt"><a href="../Structs/AddToWalletDisplayStatus.html">AddToWalletDisplayStatus</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -596,7 +606,7 @@ Note: The function will return false if your App ID (TeamID.AppBundleID) is not 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-02-10)</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-08-05)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

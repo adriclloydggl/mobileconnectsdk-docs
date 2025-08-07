@@ -1,19 +1,11 @@
 var searchData=
 [
-  ['background_5fbalanced_0',['BACKGROUND_BALANCED',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_scan_mode.html#a54cca5273ff7ddc69cce94d961ba5d26',1,'com::gallagher::security::mobileaccess::BluetoothScanMode']]],
-  ['background_5flow_5flatency_1',['BACKGROUND_LOW_LATENCY',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_scan_mode.html#a2a2c9d56dbd0309f4cfe1ad2cc52690f',1,'com::gallagher::security::mobileaccess::BluetoothScanMode']]],
-  ['background_5flow_5fpower_2',['BACKGROUND_LOW_POWER',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_scan_mode.html#a4e9034ea3f5f49142a099a035a72e2ff',1,'com::gallagher::security::mobileaccess::BluetoothScanMode']]],
-  ['background_5fopportunistic_3',['BACKGROUND_OPPORTUNISTIC',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_scan_mode.html#a6c55ee41cfa4351e66905be51fcda3ce',1,'com::gallagher::security::mobileaccess::BluetoothScanMode']]],
-  ['background_5fscreen_5fon_4',['BACKGROUND_SCREEN_ON',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_scan_mode.html#abff07d5ef6a97b9907da6dd969b5c9a7',1,'com::gallagher::security::mobileaccess::BluetoothScanMode']]],
-  ['ble_5ferror_5fdisabled_5',['BLE_ERROR_DISABLED',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a38052f763c22845db1dd4b6881aa870a',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5ferror_5flocation_5fservice_5fdisabled_6',['BLE_ERROR_LOCATION_SERVICE_DISABLED',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a095563604290abbae2ab3548e9b32f80',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5ferror_5fno_5fbackground_5flocation_5fpermission_7',['BLE_ERROR_NO_BACKGROUND_LOCATION_PERMISSION',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#abd8332dac34f8e64a0d4477b86639eea',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5ferror_5fno_5fbluetooth_5fconnect_5fpermission_8',['BLE_ERROR_NO_BLUETOOTH_CONNECT_PERMISSION',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a09911f574aac3ab6106311d201ddee17',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5ferror_5fno_5fbluetooth_5fscan_5fpermission_9',['BLE_ERROR_NO_BLUETOOTH_SCAN_PERMISSION',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a81844b1fc32866a2be0a2fe433cdf745',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5ferror_5fno_5flocation_5fpermission_10',['BLE_ERROR_NO_LOCATION_PERMISSION',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#af3dd928f889a7091109a3c5d8d6250d4',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5ferror_5funauthorized_11',['BLE_ERROR_UNAUTHORIZED',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a5b346c8c1e58c47aa4017f1ccda03469',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5fwarning_5flocation_5fservice_5fdisabled_12',['BLE_WARNING_LOCATION_SERVICE_DISABLED',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a89eefd562623dcfb6084b9ad361e56f1',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['ble_5fwarning_5fno_5flocation_5fpermission_13',['BLE_WARNING_NO_LOCATION_PERMISSION',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html#a259f0b196fadee4df77d111f5f2a6869',1,'com::gallagher::security::mobileaccess::MobileAccessState']]],
-  ['bluetoothconnectionsensitivity_14',['BluetoothConnectionSensitivity',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_connection_sensitivity.html',1,'com::gallagher::security::mobileaccess']]],
-  ['bluetoothscanmode_15',['BluetoothScanMode',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_bluetooth_scan_mode.html',1,'com::gallagher::security::mobileaccess']]]
+  ['2_20add_20the_20salto_20ble_20service_20to_20androidmanifest_20xml_0',['2. Add the Salto BLE Service to AndroidManifest.xml',['../index.html#autotoc_md20',1,'']]],
+  ['2_20authentication_20details_1',['2. Authentication Details',['../index.html#autotoc_md47',1,'']]],
+  ['2_20discovery_20of_20readers_2',['2. Discovery of Readers',['../index.html#autotoc_md15',1,'']]],
+  ['2_20edit_20build_20gradle_20under_20your_20app_20folder_3',['2. Edit build.gradle Under Your App Folder',['../index.html#autotoc_md5',1,'']]],
+  ['2_20fetching_20aperio_20ble_20credentials_4',['2. Fetching Aperio BLE Credentials',['../index.html#autotoc_md34',1,'']]],
+  ['2_20implement_20the_20digitalidlistener_5',['2. Implement the DigitalIdListener',['../index.html#autotoc_md29',1,'']]],
+  ['2_20listing_20registered_20credentials_6',['2. Listing Registered Credentials',['../index.html#autotoc_md10',1,'']]],
+  ['2_20registration_20details_7',['2. Registration Details',['../index.html#autotoc_md46',1,'']]]
 ];

@@ -1,5 +1,27 @@
 var searchData=
 [
-  ['tostring_0',['toString',['../classcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_connection_error.html#a49a06cebe974d5bd35cd8813634df430',1,'com.gallagher.security.mobileaccess.ReaderConnectionError.toString()'],['../classcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_registration_error.html#a7b70be9c4e7963674363dd34a5ad955e',1,'com.gallagher.security.mobileaccess.RegistrationError.toString()']]],
-  ['totp_1',['TOTP',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_sdk_feature.html#a3900862ed40815ea7eccd33be6dc8be6',1,'com::gallagher::security::mobileaccess::SdkFeature']]]
+  ['manifest_0',['I Get Prompted for Permissions I Didn&apos;t Add to the Manifest',['../index.html#autotoc_md53',1,'']]],
+  ['manual_20connect_1',['3. Manual Connect',['../index.html#autotoc_md16',1,'']]],
+  ['medium_2',['MEDIUM',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_distance.html#a79fe3f1a8f6192d8c6c7981d20f21667',1,'com::gallagher::security::mobileaccess::ReaderDistance']]],
+  ['messages_3',['Customising SDK Messages',['../index.html#autotoc_md44',1,'']]],
+  ['missing_4',['I Get Compilation or Runtime Errors Where a Class or Function is Missing',['../index.html#autotoc_md54',1,'']]],
+  ['mobile_20connect_5',['Using SALTO keys with Mobile Connect',['../index.html#autotoc_md18',1,'']]],
+  ['mobile_20connect_20sdk_6',['mobile connect sdk',['../index.html#autotoc_md32',1,'Using Aperio BLE Access with Mobile Connect SDK'],['../index.html#autotoc_md27',1,'Using Digital IDs with Mobile Connect SDK']]],
+  ['mobile_20connect_20sdk_20for_20android_20developer_20guide_7',['Gallagher Mobile Connect SDK for Android - Developer Guide',['../index.html',1,'']]],
+  ['mobile_20connect_20sdk_20to_20include_20aperio_20as_20an_20enabled_20feature_8',['1. Configure Mobile Connect SDK to Include Aperio as an Enabled Feature',['../index.html#autotoc_md33',1,'']]],
+  ['mobile_20connect_20sdk_20to_20include_20salto_20as_20an_20enabled_20feature_9',['3. Configure Mobile Connect SDK to Include Salto as an Enabled Feature',['../index.html#autotoc_md21',1,'']]],
+  ['mobile_20connect_20sdk_20within_20your_20application_10',['4. Configure the Mobile Connect SDK within Your Application',['../index.html#autotoc_md7',1,'']]],
+  ['mobile_20connected_20sdk_20to_20include_20digital_20id_20as_20an_20enabled_20feature_11',['1. Configure Mobile Connected SDK to Include Digital ID as an Enabled Feature',['../index.html#autotoc_md28',1,'']]],
+  ['mobile_20credential_12',['mobile credential',['../index.html#autotoc_md9',1,'1. Registering a Mobile Credential'],['../index.html#autotoc_md11',1,'3. Deleting a Mobile Credential']]],
+  ['mobile_20credential_20updates_20i_20e_20digital_20id_20or_20salto_20from_20the_20cloud_13',['I Don&apos;t Receive Mobile Credential Updates (i.e. Digital ID or Salto) from the Cloud',['../index.html#autotoc_md50',1,'']]],
+  ['mobile_20credentials_14',['Mobile Credentials',['../index.html#autotoc_md8',1,'']]],
+  ['mobileaccess_15',['MobileAccess',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access.html',1,'com::gallagher::security::mobileaccess']]],
+  ['mobileaccessprovider_16',['MobileAccessProvider',['../classcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_provider.html',1,'com::gallagher::security::mobileaccess']]],
+  ['mobileaccessstate_17',['MobileAccessState',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_access_state.html',1,'com::gallagher::security::mobileaccess']]],
+  ['mobilecredential_18',['MobileCredential',['../interfacecom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_credential.html',1,'com::gallagher::security::mobileaccess']]],
+  ['mobilecredentialfilter_19',['MobileCredentialFilter',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_mobile_credential_filter.html',1,'com::gallagher::security::mobileaccess']]],
+  ['mode1_20',['MODE1',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_action_type.html#a7c88878ab229569d27a60519ece52200',1,'com::gallagher::security::mobileaccess::ReaderActionType']]],
+  ['mode2_21',['MODE2',['../enumcom_1_1gallagher_1_1security_1_1mobileaccess_1_1_reader_action_type.html#a80baae1bf3fccf55e06367f31db93517',1,'com::gallagher::security::mobileaccess::ReaderActionType']]],
+  ['my_20app_20s_20target_20to_20sdk_2034_22',['I Get Issues After Updating my App&apos;s Target to SDK 34',['../index.html#autotoc_md55',1,'']]],
+  ['my_20app_20s_20target_20to_20sdk_2035_23',['I Get Issues After Updating my App&apos;s Target to SDK 35',['../index.html#autotoc_md56',1,'']]]
 ];
