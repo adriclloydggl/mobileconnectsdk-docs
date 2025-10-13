@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email NFC Entitlement Request</title>
+    <script>
+        function sendEmail() {
+            const recipient = "applepayentitlements@apple.com";
+            const subject = "Request for NFC Entitlement - Digital Key Integration with Apple Wallet";
+            const body = encodeURIComponent(
+                `Dear Entitlement Team,
+
+We are currently in the process of integrating digital keys with Apple Wallet as a key feature of our platform. To facilitate this integration seamlessly, we kindly request the activation of a specialized entitlement for our Apple Developer account within the App Store Connect environment.
+
+The specific entitlement we seek pertains to: com.apple.developer.contactless-payment-pass-provisioning: ["shareablecredential"]. We have provided and answered the following questions to provide clarity on our intentions:
+
+1. **PROPOSED USE CASES FOR ACCESS PASS PROVISIONING:**
+   - [Please provide a detailed description of how your platform intends to utilize access pass provisioning within Apple Wallet.]
+
+2. **COUNTRY OF BUSINESS HEADQUARTERS:**
+   - [Specify the country where your organisation's principal business headquarters are situated.]
+
+3. **ORGANISATION NAME:**
+   - [Provide the official name of your organisation as registered with Apple.]
+
+4. **TEAM ID (YOUR APPLE DEVELOPER ACCOUNT TEAM ID):**
+   - [Provide the unique Team ID associated with your Apple developer account.]
+
+5. **ADAM ID (YOUR APP'S APP STORE ID):**
+   - [Share the App Store ID associated with your application.]
+
+6. **CONTACT NAME AND DETAILS OF THE PARTNER YOU ARE WORKING WITH:**
+   - [Share the contact name of the company who instructed you to send in a request for entitlement.]
+
+We confirmed that our request aligns with the necessary prerequisites and guidelines. Should you require any additional information or clarification, please do not hesitate to reach out to us.
+
+We appreciate your prompt attention to this request. It is crucial for us to have this entitlement enabled as it plays an integral role in achieving full functionality of the "Add to Wallet" feature within our application. Your support in this matter is greatly valued.
+
+Thank you for your assistance.
+
+Best regards,
+
+[Your Name]
+[Your Title]
+[Your Contact Information]`
+            );
+
+            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+            
+            // Attempt to launch email client
+            window.location.href = mailtoLink;
+        }
+
+        // Auto-launch with slight delay to avoid browser restrictions
+        window.onload = function() {
+            setTimeout(sendEmail, 500); // Delay by 500ms to improve success rate
+        };
+    </script>
+</head>
+<body>
+    <p>If the email does not open automatically, <a href="#" onclick="sendEmail(); return false;">click here</a>.</p>
+</body>
+</html>
