@@ -6,6 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: "gradle" # See documentation for possible values
-    directory: "/samples/android/mobileconnectsampleapp/app/" # Location of package manifests
+    directory: "/samples/android/mobileconnectsampleapp" # Location of package manifests
     schedule:
       interval: "weekly"
